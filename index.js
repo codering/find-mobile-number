@@ -82,15 +82,15 @@ async function action(pre, fileName) {
   
 }
 
-//setTimeout(()=>action("136", "p_136"), 1000)
+ setTimeout(()=>action("136", "p_136"), 1000)
 
-//setTimeout(()=>action("138", "p_138"), 1000)
+ setTimeout(()=>action("138", "p_138"), 1000)
 
-//setTimeout(()=>action("139", "p_139"), 1000)
+ setTimeout(()=>action("139", "p_139"), 1000)
 
-//setTimeout(()=>action("135", "p_135"), 1000)
+ setTimeout(()=>action("135", "p_135"), 1000)
 
-setTimeout(()=>action("158", "p_158"), 1000)
+ setTimeout(()=>action("158", "p_158"), 1000)
 
-setTimeout(()=>action("159", "p_159"), 1000)
+ setTimeout(()=>action("159", "p_159"), 1000)
 
