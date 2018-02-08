@@ -63,7 +63,7 @@ async function sleep(s) {
 
 async function action(pre, fileName) {
   let all = []
-  for(let i=1; i<2000; i++) {
+  for(let i=1; i<5000; i++) {
     const q = `page_no=${i}&dis=1&jiage=1st&st=4&ttk=${pre}________`
     const arr = await gap(q)
     if (arr.length === 0) {
