@@ -2,6 +2,10 @@ const http = require("http")
 const iconv = require("iconv-lite")
 const fs = require("fs");
 
+const P_TYPE = {
+  "CHINA_TELECOM": "cdma",
+  "CHINA_MOBILE": "ydxuanhao"
+}
 
 function writeData(data, fileName, append) {
   fs.writeFileSync(fileName, data.join("\n"));
@@ -24,12 +28,12 @@ function parseNumer(content) {
 }
 
 
-function gap(query) {
+function gap(url) {
 
   return new Promise(function(rs){
     const options = {
       hostname: 'www.028hao.com',
-      path: `/ydxuanhao/?${query}`,
+      path: url,
       method: 'GET',
     }
     const req = http.request(options, function(res) {
@@ -61,11 +65,11 @@ async function sleep(s) {
   })
 }
 
-async function action(pre, fileName) {
+async function action(path, pre, fileName) {
   let all = []
   for(let i=1; i<5000; i++) {
-    const q = `page_no=${i}&dis=1&jiage=1st&st=4&ttk=${pre}________`
-    const arr = await gap(q)
+    const url = `/${path}/?page_no=${i}&dis=1&jiage=1st&st=4&ttk=${pre}________`
+    const arr = await gap(url)
     if (arr.length === 0) {
       break;
     }
@@ -82,15 +86,22 @@ async function action(pre, fileName) {
   
 }
 
- setTimeout(()=>action("136", "p_136"), 1000)
+//====== 移动 ======
 
- setTimeout(()=>action("138", "p_138"), 1000)
+/**
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "136", "p_136"), 1000)
 
- setTimeout(()=>action("139", "p_139"), 1000)
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "138", "p_138"), 1000)
 
- setTimeout(()=>action("135", "p_135"), 1000)
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "139", "p_139"), 1000)
 
- setTimeout(()=>action("158", "p_158"), 1000)
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "135", "p_135"), 1000)
 
- setTimeout(()=>action("159", "p_159"), 1000)
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "158", "p_158"), 1000)
 
+ setTimeout(()=>action(P_TYPE.CHINA_MOBILE, "159", "p_159"), 1000)
+ */
+
+ //====== 电信的 =======
+
+ setTimeout(()=>action(P_TYPE.CHINA_TELECOM, "180", "p_180"), 1000)
